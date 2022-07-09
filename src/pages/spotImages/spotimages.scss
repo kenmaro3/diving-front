@@ -1,0 +1,224 @@
+.spotImagesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .headContainer {
+        background-color: white;
+        margin-top: 60px;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+        padding: 40px 60px;
+
+        .title {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .description {
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+    }
+
+    .flowContainer {
+        margin-top: 40px;
+        background-color: white;
+        padding: 20px 60px;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+
+        display: flex;
+
+        .first {
+            margin-left: 10%;
+
+        }
+
+        .second {
+            margin-left: 10%;
+
+        }
+
+        .third {
+            margin-left: 10%;
+
+        }
+
+        .active {
+            color: blue;
+        }
+    }
+
+    .basicInfoContainer {
+        margin-top: 60px;
+        width: 66%;
+        margin-left: 17%;
+        margin-right: 17%;
+
+
+        .headerTitle {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .container {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 20px;
+            padding-bottom: 30px;
+
+
+            .containerInside {
+                padding: 40px 80px;
+
+                .description {
+                    font-size: 18px;
+                    font-weight: 500;
+
+                }
+
+                .inputContainers {
+                    margin-top: 20px;
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    .inputContainer {
+                        margin-top: 40px;
+                        display: flex;
+                        flex-direction: column;
+
+                        .title {
+                            font-size: 14px;
+                            width: 300px;
+                            color: #7c7c7c;
+                        }
+
+                        img {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            background-color: #b7b7b7;
+                            width: 180px;
+                            height: 180px;
+                        }
+
+                        button{
+                            background-color: #343434;
+                            color: white;
+                            padding: 4px 6px 4px 6px;
+                            width: 180px;
+                            border: none;
+                            border-radius: 8px;
+
+
+                        }
+
+
+
+                        .captionContainer {
+                            margin-top: 20px;
+                            display: flex;
+                            flex-direction: column;
+
+                            .title {
+                                font-size: 12px;
+                                color: #6a6a6a;
+                            }
+
+                            input {
+                                width: 55%;
+                                height: 20px;
+                                margin-top: 5px;
+                                border: 2px solid #b7b7b7;
+                                border-radius: 8px;
+                                font-size: 12px;
+                                padding: 4px 8px 4px 8px;
+                                color: #313131;
+                            }
+
+                        }
+
+
+                        textarea {
+                            width: 80%;
+                            border: 2px solid #b7b7b7;
+                            border-radius: 8px;
+                            font-size: 18px;
+                            padding: 4px 8px 4px 8px;
+                            color: #313131;
+                        }
+
+
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+    .backButtonContainer {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        button {
+            font-size: 20px;
+            font-weight: 550;
+            width: 30%;
+            height: 70px;
+
+            background-color: #7c7c7c;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            transition: 0.2s;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--blue);
+            }
+
+        }
+    }
+
+    .buttonContainer {
+        margin-top: 40px;
+        margin-bottom: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        button {
+            font-size: 20px;
+            font-weight: 550;
+            width: 30%;
+            height: 70px;
+
+            background-color: blue;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            transition: 0.2s;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--blue);
+            }
+
+        }
+    }
+
+}

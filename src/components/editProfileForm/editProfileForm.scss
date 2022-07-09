@@ -1,0 +1,379 @@
+.editProfileFormContainer {
+  .editProfileForm {
+    width: 60%;
+    margin-left: 15%;
+    margin-top: 4%;
+    background-color: white;
+    padding: 40px 100px 80px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+
+    .headerContainer {
+      display: flex;
+      align-items: center;
+
+      .title {
+        font-size: 36px;
+        font-weight: 600;
+      }
+
+      .submitContainer {
+        margin-top: 30px;
+        margin-left: auto;
+
+        .button {
+          font-size: 18px;
+          font-weight: 500;
+          padding: 10px 12px 10px 12px;
+          border-radius: 6px;
+          border: none;
+          background-color: var(--main-button-color);
+          color: white;
+          transition: 0.2s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: var(--main-button-color-hover);
+          }
+        }
+
+      }
+
+    }
+
+    .mainContainer {
+      margin-top: 40px;
+      display: flex;
+
+      .imgContainer {
+        flex: 1;
+
+        .profileImage {
+          width: 120px;
+          height: 120px;
+          margin: 0 auto;
+
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+
+        .profileImageUpload{
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .buttonContainer{
+            display: flex;
+            align-items: center;
+            background-color: #f2f2f2;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 8px 10px 8px 10px;
+            border-radius: 6px;
+
+            &:hover{
+              background-color: #efefef;
+            }
+            button{
+              background: none;
+              border: none;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .inputContainer {
+        flex: 2;
+
+        .fieldContainer {
+          margin-top: 20px;
+
+          .label {
+            display: flex;
+            font-size: 16px;
+            font-weight: 500;
+            color: #454545;
+
+            .value {
+              margin-left: 10px;
+            }
+          }
+
+          .input {
+            margin-top: 10px;
+            border: 0.5px solid;
+            border-color: #bbbbbb;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #fdfdfd;
+          }
+
+          .textarea {
+            margin-top: 10px;
+            border: 0.5px solid;
+            border-color: #bbbbbb;
+            border-radius: 6px;
+            background-color: #fdfdfd;
+            width: 80%;
+            height: 100px;
+            font-size: 14px;
+            padding: 8px 10px 8px 10px;
+
+          }
+
+          .inputUsername {
+            width: 80%;
+          }
+
+          .inputEmail {
+            width: 80%;
+          }
+
+          .inputWebsite {
+            width: 80%;
+          }
+        }
+
+        .footer {
+          margin-top: 40px;
+
+          font-size: 14px;
+          color: #666666;
+
+        }
+
+        .snsContainer {
+          display: flex;
+          align-items: center;
+
+          .twitter {
+            margin-left: 40px;
+          }
+
+          .fieldContainer {
+            .label {
+              display: flex;
+              font-size: 16px;
+              font-weight: 500;
+              color: #454545;
+
+              .value {
+                margin-left: 10px;
+              }
+            }
+
+            .input {
+              margin-top: 10px;
+              border: 0.5px solid;
+              border-color: #bbbbbb;
+              padding: 6px 12px;
+              border-radius: 6px;
+              font-size: 16px;
+              background-color: #f9f9f9;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.editProfileFormContainerMobile {
+  .editProfileForm {
+    width: 94%;
+    margin-left: 3px;
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+    
+
+    .headerContainer {
+      display: flex;
+      align-items: center;
+
+      .title {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .submitContainer {
+        margin-top: 30px;
+        margin-left: auto;
+
+        .button {
+          border-color: #bbbbbb;
+          font-size: 14px;
+          font-weight: 500;
+          padding: 6px 8px 6px 8px;
+          border-radius: 5px;
+          border: none;
+          background-color: var(--main-button-color);
+          color: var(--main-button-font-color);
+          transition: 0.2s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: var(--main-button-color-hover);
+          }
+        }
+
+      }
+
+    }
+
+    .mainContainer {
+      margin-top: 40px;
+
+      .imgContainer {
+        flex: 1;
+
+        .profileImage {
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+
+          img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+
+        .profileImageUpload{
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .buttonContainer{
+            display: flex;
+            align-items: center;
+            background-color: #f2f2f2;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 6px 8px 6px 8px;
+            border-radius: 6px;
+
+            &:hover{
+              background-color: #efefef;
+            }
+            button{
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-size: 13px;
+            }
+          }
+        }
+      }
+
+      .inputContainer {
+        margin-left: 20px;
+
+        .fieldContainer {
+          margin-top: 20px;
+
+          .label {
+            display: flex;
+            font-size: 16px;
+            font-weight: 500;
+            color: #454545;
+
+            .value {
+              margin-left: 10px;
+            }
+          }
+
+          .input {
+            margin-top: 10px;
+            border: 0.5px solid;
+            border-color: #bbbbbb;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #fdfdfd;
+          }
+
+          .textarea {
+            margin-top: 10px;
+            border: 0.5px solid;
+            border-color: #bbbbbb;
+            border-radius: 6px;
+            background-color: #fdfdfd;
+            width: 80%;
+            height: 100px;
+            font-size: 14px;
+            padding: 8px 10px 8px 10px;
+
+          }
+
+          .inputUsername {
+            width: 80%;
+          }
+
+          .inputEmail {
+            width: 80%;
+          }
+
+          .inputWebsite {
+            width: 80%;
+          }
+        }
+
+        .footer {
+          margin-top: 40px;
+          margin-bottom: 20px;
+
+          font-size: 13px;
+          color: #666666;
+
+        }
+
+        .snsContainer {
+
+          .twitter {
+          }
+
+          .fieldContainer {
+            .label {
+              display: flex;
+              font-size: 14px;
+              font-weight: 500;
+              color: #454545;
+
+              .value {
+                margin-left: 10px;
+              }
+            }
+
+            .input {
+              margin-top: 10px;
+              border: 0.5px solid;
+              border-color: #bbbbbb;
+              padding: 6px 12px;
+              border-radius: 6px;
+              font-size: 16px;
+              background-color: #f9f9f9;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

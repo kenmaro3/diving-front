@@ -1,0 +1,17 @@
+.layout {
+  max-width: 100%;
+  height: 100vh;
+
+  //position: relative;
+  .main {
+    background-color: #f9f9f9;
+    border-top: 1px solid lightgray;
+    min-height: calc(100vh);
+
+    .mainWrapper {
+      width: 100%;
+      margin: 0;
+      
+    }
+  }
+}

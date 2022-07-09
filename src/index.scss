@@ -1,0 +1,36 @@
+html,body{
+  margin: 0;
+  padding: 0;
+}
+* {
+  font-family: 'Noto Sans Japanese', sans-serif;;
+  margin: 0;
+  padding: 0;
+}
+
+.globalLink{
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s;
+  &:hover{
+    color: #858585;
+
+  }
+}
+
+:root {
+  --blue: #2438cf;
+  --blue_opacity: rgba(10, 38, 255, 0.8);
+  --blue_light: #4554c3; 
+
+  --button-bg-dark: #3657ff;
+  --button-text-dark: #ffffff;
+  --button-bg-light: #ffffff;
+  --button-text-light: #3657ff;
+
+  --button-bg-bf: #ffffff;
+  --button-text-bf: #373737;
+
+  --input-border: #707070;
+}
+

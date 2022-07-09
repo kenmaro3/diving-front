@@ -1,0 +1,44 @@
+.footerContainer {
+    background: blue;
+    padding: 60px 40px 60px 40px;
+
+
+    .innerContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .logoContainer {
+            flex: 1;
+        }
+
+        .contentContainer {
+            flex: 1;
+
+            .header {
+                color: white;
+                font-weight: 500;
+                font-size: 16px;
+            }
+
+            .value {
+                color: white;
+                font-weight: 500;
+                font-size: 14px;
+                margin-top: 20px;
+
+            }
+        }
+    }
+
+    .content {
+        font-weight: 500;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+}

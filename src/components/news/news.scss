@@ -1,0 +1,24 @@
+.newsContainer{
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+
+    .newsInsideContainer{
+        padding: 10px 20px 10px 20px;
+
+        .newsItem{
+            .date{
+                font-size: 16px;
+                font-weight: 400;
+                color: #a4a4a4;
+
+            }
+            .title{
+                margin-left: 20px;
+                font-size: 16px;
+                font-weight: 350;
+                color: #717171;
+            }
+        }
+    }
+}

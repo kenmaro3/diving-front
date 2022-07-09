@@ -1,0 +1,191 @@
+.loginContainer {
+  background-color: white;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 100px;
+  border-radius: 20px;
+  padding-bottom: 40px;
+
+
+  .containerInside {
+    margin: 4% 8% 4% 8%;
+
+    .tabContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 40px;
+      margin-left: 5%;
+      width: 90%;
+
+      .tab1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        background-color: #eaeaea;
+        color: #838383;
+        height: 40px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        transition: 0.2s;
+
+      }
+
+      .tab2 {
+        display: flex;
+        align-items: center;
+        background-color: #eaeaea;
+        color: #838383;
+        justify-content: center;
+        height: 40px;
+        width: 50%;
+        text-align: center;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        transition: 0.2s;
+      }
+
+      .active {
+        background-color: black;
+        color: white;
+      }
+    }
+
+    .snsContainer {
+      margin-top: 20px;
+
+      .header {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .twitter {
+        button {
+          background-color: var(--twitter-color);
+          padding: 6px 10px 6px 10px;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .inputContainer {
+      width: 90%;
+      margin-left: 5%;
+      .emailContainer {
+        margin-top: 40px;
+        width: 100%;
+
+        .header {
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .email {
+          margin-top: 20px;
+          width: 100%;
+
+          .title {
+            font-size: 12px;
+            font-weight: 500;
+          }
+
+          input {
+            width: 96%;
+            height: 40px;
+            font-size: 18px;
+            padding: 4px 2% 4px 2%;
+            background: none;
+            border-radius: 8px;
+            border: 1px solid #838383;
+            margin-top: 4px;
+          }
+        }
+
+        .username {
+          margin-top: 20px;
+          width: 100%;
+
+          .title {
+            font-size: 12px;
+            font-weight: 500;
+          }
+
+          input {
+            width: 96%;
+            height: 40px;
+            font-size: 18px;
+            padding: 4px 2% 4px 2%;
+            background: none;
+            border-radius: 8px;
+            border: 1px solid #838383;
+            margin-top: 4px;
+          }
+        }
+
+        .password {
+          margin-top: 10px;
+
+          .title {
+            font-size: 12px;
+            font-weight: 500;
+          }
+
+          input {
+            width: 96%;
+            height: 40px;
+            font-size: 18px;
+            padding: 4px 2% 4px 2%;
+            background: none;
+            border-radius: 8px;
+            border: 1px solid #838383;
+            margin-top: 4px;
+          }
+        }
+      }
+
+      .buttonContainer {
+        width: 100%;
+        margin-top: 20px;
+
+        button {
+          width: 100%;
+          border-radius: 8px;
+          padding: 12px 2% 12px 2%;
+          font-size: 16px;
+          background-color: var(--button-bg-dark);
+          border: none;
+          color: white;
+
+        }
+
+      }
+
+      .signUpButtonContainer {
+        width: 100%;
+        margin-top: 40px;
+
+        .button {
+          text-align: center;
+          width: 96%;
+          border-radius: 8px;
+          padding: 12px 2% 12px 2%;
+          font-size: 16px;
+          background-color: var(--button-bg-bf);
+          border: none;
+          color: var(--button-text-bf);
+          font-weight: 550;
+          border: 2px solid var(--button-text-bf);
+
+        }
+      }
+
+    }
+
+
+  }
+
+
+
+
+}

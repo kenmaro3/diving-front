@@ -1,0 +1,319 @@
+.createRatingContainer {
+  margin-left: 30%;
+  margin-top: 60px;
+  background-color: white;
+  border-radius: 20px;
+  width: 40%;
+  padding-bottom: 40px;
+
+  .innerMargin {
+    padding: 40px 60px;
+
+    .header {
+      display: flex;
+
+      .buttonContainer {
+        margin-left: auto;
+        margin-right: 20px;
+
+
+        .ratingButton {
+          padding: 4px 8px 4px 8px;
+          border-radius: 8px;
+          border: 1px solid #b7b7b7;
+          font-size: 18px;
+          cursor: pointer;
+          transition: 0.2s;
+          background-color: white;
+
+          &:hover {
+            background-color: #fafafa;
+
+          }
+        }
+      }
+
+    }
+
+    .spotNameContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .spotName {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: 500;
+      }
+      .spotName2 {
+        margin-left: 10px;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+    }
+
+
+    .containerInside {
+      margin-top: 40px;
+    }
+
+    .postInner {
+      margin-top: 20px;
+    }
+
+    .inputContainers {
+      margin-top: 40px;
+
+      .ratingContainer {
+        display: flex;
+
+        .ratingValue {
+          margin-left: 10px;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+
+      .inputContainer {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        padding: 6px 12px 6px 12px;
+
+        .title {
+          font-size: 16px;
+          width: 200px;
+        }
+
+        input {
+          width: 80%;
+          height: 40px;
+          border: 2px solid #b7b7b7;
+          border-radius: 8px;
+          font-size: 18px;
+          padding: 4px 8px 4px 8px;
+          color: #313131;
+        }
+
+        textarea {
+          margin-left: 10%;
+          width: 80%;
+          border: 2px solid #b7b7b7;
+          border-radius: 8px;
+          font-size: 18px;
+          padding: 4px 8px 4px 8px;
+          color: #313131;
+        }
+
+
+      }
+    }
+
+    .segment {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #e4e4e4;
+      padding-bottom: 20px;
+
+      .active {
+        border-bottom: 1px solid var(--blue);
+        color: var(--blue);
+
+      }
+
+      .placeInfo {}
+
+      .post {
+        margin-left: 20px;
+      }
+    }
+
+    .infoContainer {
+      margin-top: 40px;
+
+      .featureCard {
+        display: flex;
+        align-items: center;
+        padding: 30px 20px;
+        border-bottom: 1px solid #dadada;
+
+        .icon {}
+
+        .title {
+          font-size: 20px;
+          font-weight: 400;
+          width: 20%;
+
+        }
+
+        .value {
+          width: 5%;
+          font-size: 24px;
+          background-color: #efefef;
+          color: var(--blue);
+          text-align: center;
+          padding: 5px 5px;
+
+
+        }
+
+        .comment {
+          font-size: 14px;
+          font-weight: 350;
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .postContainer {
+      margin-top: 60px;
+
+      .header {
+        font-size: 28px;
+        font-weight: 600;
+      }
+
+      .post {
+        margin-top: 30px;
+        border-bottom: 1px solid #e2e2e2;
+        padding-bottom: 10px;
+
+        .header {
+          display: flex;
+          align-items: center;
+
+          .left {
+            .container {
+              display: flex;
+              align-items: center;
+
+              .image {}
+
+              .nameContainer {
+                margin-left: 20px;
+
+                .name {
+                  font-size: 18px;
+                  font-weight: 400;
+                }
+
+                .date {
+                  font-size: 13px;
+                  font-weight: 200;
+                  color: #787878;
+                }
+              }
+            }
+
+          }
+
+          .right {
+            margin-left: auto;
+
+            .option {}
+          }
+        }
+
+        .content {
+          padding: 20px 30px;
+          font-size: 14px;
+          font-weight: 400;
+
+        }
+
+        .footer {
+          display: flex;
+          align-items: center;
+          padding: 10px 20px;
+
+          .like {
+            display: flex;
+            align-items: center;
+
+            .icon {}
+
+            .number {
+              margin-left: 5px;
+            }
+          }
+
+          .comment {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+
+            .icon {}
+
+            .number {
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .basicInfoContainer {
+      margin-top: 60px;
+
+      .header {
+        font-size: 28px;
+        font-weight: 600;
+      }
+
+      .container {
+        margin-top: 20px;
+        display: flex;
+
+        .left {
+          .image {}
+
+          .map {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .right {
+          margin-left: 40px;
+          border-top: 1px solid #d6d6d6;
+
+          .infoCard {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #d6d6d6;
+            padding: 20px 0;
+
+            .title {
+              font-size: 18px;
+              font-weight: 500;
+              width: 20%;
+            }
+
+            .text {
+              margin-left: 20px;
+              font-size: 14px;
+              font-weight: 400;
+
+            }
+          }
+        }
+      }
+    }
+
+    .photoContainer {
+      margin-top: 60px;
+
+      .header {
+        font-size: 28px;
+        font-weight: 600;
+      }
+    }
+
+  }
+
+}

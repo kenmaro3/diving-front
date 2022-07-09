@@ -1,0 +1,60 @@
+.searchPostListContainer {
+    margin-left: 80px;
+    margin-top: 10px;
+    flex-basis: 50%;
+
+    .searchPostListHeader{
+        margin-left: 10px;
+        margin-bottom: 10px;
+        font-size: 25px;
+        font-weight: 600;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #bebebe;
+    }
+
+    .postList {
+        margin: 40px 40px;
+
+        .noPosts {
+            font-size: 25px;
+            color: gray;
+            text-align: center;
+        }
+    }
+
+    .listLoader {
+        position: absolute;
+        top: 50%;
+    }
+}
+
+.searchPostListContainerMobile {
+    margin-left: 4px;
+    margin-top: 20px;
+    width: 94%;
+
+    .searchPostListHeader{
+        margin-left: 10px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #bebebe;
+    }
+
+    .postList {
+        margin: 20px 10px;
+
+        .noPosts {
+            font-size: 20px;
+            color: gray;
+            text-align: center;
+        }
+    }
+
+    .listLoader {
+        position: absolute;
+        top: 50%;
+    }
+
+}
