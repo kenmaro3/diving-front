@@ -36,15 +36,15 @@ const AppRoutes: FC = () => {
                 <Route path={'ratings'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><AllRatings/></motion.div>} />
                 <Route path={'ratings/:rating_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><Rating/></motion.div>} />
                 <Route path={'ratings/spot/:spot_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><RatingSpotAll/></motion.div>} />
-                <Route path={'spots/new'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><CreateSpot/></motion.div>} />
-                <Route path={'spots/edit/:spot_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><EditSpot/></motion.div>} />
                 <Route path={'spots/:spot_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><Spot/></motion.div>} />
                 <Route path={'spots/:spot_id/posts'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><Spot/></motion.div>} />
-                <Route path={'spots/:spot_id/images/new'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><SpotImages/></motion.div>} />
-                <Route path={'spots/:spot_id/images/edit'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><EditSpotImages/></motion.div>} />
                 <Route path={'profiles/:user_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><Profile /></motion.div>} />
-                <Route path={'posts/new/:spot_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><CreateRating/></motion.div>} />
                 <Route element={<RequireAuth />}>
+                    <Route path={'spots/edit/:spot_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><EditSpot/></motion.div>} />
+                    <Route path={'posts/new/:spot_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><CreateRating/></motion.div>} />
+                    <Route path={'spots/:spot_id/images/new'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><SpotImages/></motion.div>} />
+                    <Route path={'spots/:spot_id/images/edit'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><EditSpotImages/></motion.div>} />
+                    <Route path={'spots/new'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><CreateSpot/></motion.div>} />
                     <Route path={'profile/edit'} element={<ProfileEdit/>} />
                     <Route path={'profile'} element={<Profile />} />
                 </Route>
