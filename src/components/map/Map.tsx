@@ -11,10 +11,10 @@ const mapStyle: mapboxgl.Style = {
     sources: {
         OSM: {
             type: 'raster',
-            tiles: ['http://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+            tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
             tileSize: 256,
             attribution:
-                '<a href="http://osm.org/copyright">© OpenStreetMap contributors</a>',
+                '<a href="https://osm.org/copyright">© OpenStreetMap contributors</a>',
         },
     },
     layers: [
@@ -56,51 +56,43 @@ const Map: React.FC<MapProp> = ({ spots, spot }) => {
             center: [lng, lat],
             zoom: zoom,
         });
-
-        if(spot){
-            const condition = spot.lat && spot.lng
-            if(condition){
-                const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-                    spot.name
-                    );
-                const marker1 = new mapboxgl.Marker()
-                    .setLngLat([lng, lat])
-                    .setPopup(popup)
-                    .addTo(map);
-                }
-        }
-
-        spots?.forEach((oneSpot) => {
-            const condition = oneSpot.lat && oneSpot.lng
-            if(condition){
-                const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-                    oneSpot.name
-                    );
-                const marker1 = new mapboxgl.Marker()
-                    .setLngLat([lng, lat])
-                    .setPopup(popup)
-                    .addTo(map);
-                }
-        }
-        )
-
-
-
-        // mapboxgl.Mapのインスタンスへの参照を保存
-        setMapInstance(map);
-
-    }, []);
-
-    useEffect(() => {
         mapInstance?.on('move', () => {
             setLng(Number(mapInstance.getCenter().lng.toFixed(2)));
             setLat(Number(mapInstance?.getCenter().lat.toFixed(2)));
             setZoom(Number(mapInstance?.getZoom()));
         });
-    })
 
+        if (spot) {
+            const condition = spot.lat && spot.lng
+            if (condition) {
+                const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+                    spot.name
+                );
+                const marker1 = new mapboxgl.Marker()
+                    .setLngLat([Number(spot.lng), Number(spot.lat)])
+                    .setPopup(popup)
+                    .addTo(map);
+                
+            }
+        }
 
+        spots?.forEach((oneSpot) => {
+            const condition = oneSpot.lat && oneSpot.lng
+            if (condition) {
+                const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+                    oneSpot.name
+                );
+                const marker1 = new mapboxgl.Marker()
+                    .setLngLat([Number(oneSpot.lng), Number(oneSpot.lat)])
+                    .setPopup(popup)
+                    .addTo(map);
+            }
+        }
+        )
+        // mapboxgl.Mapのインスタンスへの参照を保存
+        setMapInstance(map);
 
+    }, []);
 
 
     return (

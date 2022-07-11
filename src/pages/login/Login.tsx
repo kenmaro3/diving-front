@@ -38,17 +38,10 @@ const Login: FC = () => {
     }, [dispatch, search])
 
     const onSubmitSignIn = (data: any) => {
-        console.log("clicked")
-        console.log(email)
-        console.log(password)
         dispatch(login(email, password))
     }
 
     const onSubmitSignUp = (data: any) => {
-        console.log("clicked")
-        console.log(email)
-        console.log(username)
-        console.log(password)
         dispatch(registration(username, email, password))
         // dispatch(login(data.Email, data.Password))
     }
