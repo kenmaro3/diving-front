@@ -7,6 +7,7 @@ import { logout, setIsAuth } from "../../store/reducers/auth/action-creators";
 import { useAppSelector } from "../../hooks";
 import SearchBar from '../searchBar/SearchBar';
 import ProfileMenu from '../profileMenu/ProfileMenu';
+import MediaQuery from "react-responsive";
 
 const Navbar: FC = () => {
     const navigate = useNavigate()
@@ -41,41 +42,62 @@ const Navbar: FC = () => {
         setFunctionsForProfileMenu(functionsForProfileMenu.set("ログアウト", handleLogout))
     }, [])
 
+    const commonJsx = () => {
+
+        return (
+            <>
+                <div className={'left'}>
+                    <Link to={'/'} className={'globalLink'}>
+                        <div className="title">ダイビングイクンゴ</div>
+                    </Link>
+                    {/* <h1 className={'title'}>ProtoHub</h1> */}
+                    {/* <SearchBar placeholder='Search or jump to...' /> */}
+
+                </div>
+                <div className={'right'}>
+                    {isAuth ?
+                        <div>
+
+                            <ProfileMenu user={user} functions={functionsForProfileMenu}>
+                                <div className="navbarProfileImageContainer">
+                                    <img className='profileImage' src={user.profile_picture} alt="avatar" />
+                                    <span className="caret caret-reversed"></span>
+                                </div>
+
+                            </ProfileMenu>
+                        </div>
+                        :
+                        <>
+                            <Link to={'/login'}>
+                                <button className={'loginButton'}>ログイン</button>
+                            </Link>
+                            <Link to={'/login?show=signup'}>
+                                <button className={'signupButton'}>新規登録</button>
+                            </Link>
+                        </>
+                    }
+
+                </div>
+            </>
+        )
+    }
+
     return (
-        <header className='navbarContainer'>
-            <div className={'left'}>
-                <Link to={'/'} className={'globalLink'}>
-                    <div className="title">ダイビングイクンゴ</div>
-                </Link>
-                {/* <h1 className={'title'}>ProtoHub</h1> */}
-                {/* <SearchBar placeholder='Search or jump to...' /> */}
+        <>
+        <MediaQuery query="(min-width: 768px)">
+            <header className='navbarContainer'>
+                {commonJsx()}
+            </header>
+        </MediaQuery>
 
-            </div>
-            <div className={'right'}>
-                {isAuth ?
-                    <div>
 
-                        <ProfileMenu user={user} functions={functionsForProfileMenu}>
-                            <div className="navbarProfileImageContainer">
-                                <img className='profileImage' src={user.profile_picture} alt="avatar" />
-                                <span className="caret caret-reversed"></span>
-                            </div>
+        <MediaQuery query="(max-width: 767px)">
+            <header className='navbarContainerMobile'>
+                {commonJsx()}
+            </header>
+        </MediaQuery>
 
-                        </ProfileMenu>
-                    </div>
-                    :
-                    <>
-                        <Link to={'/login'}>
-                            <button className={'loginButton'}>ログイン</button>
-                        </Link>
-                        <Link to={'/login?show=signup'}>
-                            <button className={'signupButton'}>新規登録</button>
-                        </Link>
-                    </>
-                }
-
-            </div>
-        </header>
+        </>
     );
 };
 
