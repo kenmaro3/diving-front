@@ -303,5 +303,306 @@
 
         }
     }
+}
+
+.createSpotContainerMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .headContainer {
+        background-color: white;
+        margin-top: 60px;
+        width: 90%;
+        margin-left: 5%;
+        padding: 40px 60px;
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .description {
+            margin-top: 40px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+    }
+
+    .flowContainer {
+        margin-top: 40px;
+        background-color: white;
+        padding: 10px 40px;
+        width: 80%;
+
+        display: flex;
+
+        .first {
+
+        }
+
+        .second {
+            margin-left: 10%;
+
+        }
+
+        .third {
+            margin-left: 10%;
+
+        }
+    }
+
+    .basicInfoContainer {
+        margin-top: 60px;
+        width: 90%;
+        margin-left: 5%;
+
+        .headerTitle {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .container {
+            margin-top: 40px;
+            background-color: white;
+            border-radius: 20px;
+
+
+            .containerInside {
+                padding: 40px 20px;
+
+                .description {
+                    color: var(--blue);
+                    font-size: 14px;
+                    font-weight: 500;
+
+                }
+
+                .inputContainers {
+                    margin-top: 40px;
+
+                    .inputContainer {
+                        margin-top: 10px;
+                        display: flex;
+                        align-items: center;
+                        padding: 6px 4px 6px 4px;
+
+                        .title {
+                            font-size: 16px;
+                            width: 200px;
+                        }
+
+                        input {
+                            width: 80%;
+                            height: 40px;
+                            border: 2px solid #b7b7b7;
+                            border-radius: 8px;
+                            font-size: 14px;
+                            padding: 4px 8px 4px 8px;
+                            color: #313131;
+                        }
+
+                        textarea {
+                            width: 80%;
+                            border: 2px solid #b7b7b7;
+                            border-radius: 8px;
+                            font-size: 18px;
+                            padding: 4px 8px 4px 8px;
+                            color: #313131;
+                        }
+
+
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+    .seaInfoContainer {
+        margin-top: 60px;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-bottom: 60px;
+
+        .headerTitle {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .container {
+            margin-top: 40px;
+            background-color: white;
+            border-radius: 20px;
+
+
+            .containerInside {
+                padding: 40px 80px;
+
+                .description {
+                    color: var(--blue);
+                    font-size: 18px;
+                    font-weight: 500;
+
+                }
+
+                .inputContainers {
+                    margin-top: 40px;
+
+                    .inputContainer {
+                        margin-top: 10px;
+                        display: flex;
+                        align-items: center;
+                        padding: 6px 12px 6px 12px;
+
+                        .title {
+                            font-size: 20px;
+                            width: 200px;
+                        }
+
+                        .ratingContainer{
+                            width: 20%;
+                            margin-left: 20px;
+
+                            .ratingValue{
+                                margin-left: 10px;
+                                font-weight: 600;
+                                font-size: 16px;
+                                color: #727272;
+                            }
+                        }
+
+                        input {
+                            width: 80%;
+                            height: 40px;
+                            border: 2px solid #b7b7b7;
+                            border-radius: 8px;
+                            font-size: 18px;
+                            padding: 4px 8px 4px 8px;
+                            color: #313131;
+                        }
+
+                        textarea {
+                            margin-left: 10px;
+                            width: 80%;
+                            border: 2px solid #b7b7b7;
+                            border-radius: 8px;
+                            font-size: 18px;
+                            padding: 4px 8px 4px 8px;
+                            color: #313131;
+                        }
+
+
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+    .otherInfoContainer {
+        margin-top: 60px;
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 60px;
+
+        .headerTitle {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .container {
+            margin-top: 40px;
+            background-color: white;
+            border-radius: 20px;
+
+
+            .containerInside {
+                padding: 30px 20px;
+
+                .description {
+                    color: var(--blue);
+                    font-size: 14px;
+                    font-weight: 500;
+
+                }
+
+                .inputContainers {
+                    margin-top: 40px;
+
+                    .inputContainer {
+                        margin-top: 10px;
+                        display: flex;
+                        align-items: center;
+                        padding: 6px 12px 6px 12px;
+
+                        .title {
+                            font-size: 16px;
+                            width: 200px;
+                        }
+
+                        input {
+                            width: 80%;
+                            height: 50px;
+                            border: 2px solid #b7b7b7;
+                            border-radius: 8px;
+                            font-size: 14px;
+                            padding: 4px 8px 4px 8px;
+                            color: #313131;
+                        }
+
+                        textarea {
+                            width: 90%;
+                            border: 2px solid #b7b7b7;
+                            border-radius: 8px;
+                            font-size: 14px;
+                            padding: 4px 8px 4px 8px;
+                            color: #313131;
+                        }
+
+
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+    .buttonContainer{
+        margin-top: 40px;
+        margin-bottom: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        button{
+            font-size: 14px;
+            font-weight: 550;
+            width: 30%;
+            height: 70px;
+            
+            background-color: blue;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            transition: 0.2s;
+            cursor: pointer;
+
+            &:hover{
+                background-color: var(--blue);
+            }
+
+        }
+    }
 
 }

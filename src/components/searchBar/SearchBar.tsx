@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 interface SearchBarProps {
   placeholder: string;
+  isMobile: boolean;
 }
 
 
 
-const SearchBar: FC<SearchBarProps> = ({ placeholder }) => {
+const SearchBar: FC<SearchBarProps> = ({ placeholder, isMobile}) => {
   const [filteredData, setFilteredData] = useState([]);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate()
@@ -41,7 +42,7 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder }) => {
 
 
   return (
-      <div className="searchBarContainer">
+      <div className={`${isMobile ? "searchBarContainerMobile" : "searchBarContainer"}`}>
         <input
           type="text"
           placeholder={placeholder}

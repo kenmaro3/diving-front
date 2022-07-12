@@ -13,6 +13,8 @@ import { ISpot } from '../../types/spot-type';
 import SpotBasicInfo from '../../components/spotBasicInfo/SpotBasicInfo';
 import FeatureInfo from '../../components/featureInfo/FeatureInfo';
 
+import MediaQuery from "react-responsive";
+
 const Spot = () => {
     const { spot_id } = useParams()
     const [spotToShow, setSpotToShow] = useState<ISpot>();
@@ -41,61 +43,52 @@ const Spot = () => {
 
     }, [])
 
+    const commonJsx = (isMobile: boolean) => {
+        return (
+            <>
+                <div className="innerMargin">
+                    <div className="header">
+                        <div className="top">
+                            <div className="left">
 
-    return (
-        <div className="spotContainer">
-            <div className="innerMargin">
-                <div className="header">
-                    <div className="top">
-                        <div className="left">
+                            </div>
+                            <div className="right">
+                                <div className="edit">
+                                    <span className="title" onClick={() => jumpToEditSpot()}>情報修正</span>
+
+                                </div>
+                                <div className="post">
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div className="title">
+                            {spotToShow?.name}
 
                         </div>
-                        <div className="right">
-                            {/* <div className="register">
-                                <span className="title">登録者</span>
-                                <span className="username">kenmaro</span>
-                            </div>
-                            <div className="history">
-                                <span className="title">更新履歴</span>
-                                <span className="icon"></span>
-
-                            </div> */}
-                            <div className="edit">
-                                <span className="title" onClick={() => jumpToEditSpot()}>情報修正</span>
-
-                            </div>
-                            <div className="post">
-
-                            </div>
-
-
+                        <div className="address">
+                            {`${spotToShow?.prefecture} ${spotToShow?.address1} ${spotToShow?.address2} ${spotToShow?.address3}`}
                         </div>
-                    </div>
-                    <div className="title">
-                        {spotToShow?.name}
+                        <div className="share">
+                            <div className="left">
+                                <div className="twitter">
+                                    <TwitterIcon />
+                                    <span className="title">
+                                        ツイートする
+                                    </span>
+                                </div>
+                                <div className="facebook">
+                                    <FacebookIcon />
+                                    <span className="title">
+                                        シェアする
+                                    </span>
+                                </div>
 
-                    </div>
-                    <div className="address">
-                        {`${spotToShow?.prefecture} ${spotToShow?.address1} ${spotToShow?.address2} ${spotToShow?.address3}`}
-                    </div>
-                    <div className="share">
-                        <div className="left">
-                            <div className="twitter">
-                                <TwitterIcon />
-                                <span className="title">
-                                    ツイートする
-                                </span>
                             </div>
-                            <div className="facebook">
-                                <FacebookIcon />
-                                <span className="title">
-                                    シェアする
-                                </span>
-                            </div>
-
-                        </div>
-                        <div className="right">
-                            {/* <div className="like">
+                            <div className="right">
+                                {/* <div className="like">
                                 <span className='icon'></span>
                                 <span className="title">
                                     いいね
@@ -103,53 +96,53 @@ const Spot = () => {
                             </div> */}
 
 
-                            <div className="post" onClick={(() => jumpToCreatePost())}>
-                                <span className='icon'></span>
-                                <span className='title'>
-                                    口コミ投稿
-                                </span>
+                                <div className="post" onClick={(() => jumpToCreatePost())}>
+                                    <span className='icon'></span>
+                                    <span className='title'>
+                                        口コミ投稿
+                                    </span>
+                                </div>
+
+
+
                             </div>
-
-
-
                         </div>
+
+
+
+                    </div>
+
+                    <div className="segment">
+                        <Link to={`/spots/${spotToShow?.id}`} style={{ textDecoration: 'none' }}>
+                            <div className="placeInfo active">
+                                スポット情報
+                            </div>
+                        </Link>
+
+                        <Link to={`/ratings/spot/${spotToShow?.id}`} state={{ spot_name: spotToShow?.name }} style={{ textDecoration: 'none' }}>
+                            <div className="post">
+                                口コミ一覧
+                            </div>
+                        </Link>
+
                     </div>
 
 
+                    {spotToShow &&
+                        <FeatureInfo spot={spotToShow} isMobile={isMobile}/>
+                    }
+                    <div className="postContainer">
 
-                </div>
-
-                <div className="segment">
-                    <Link to={`/spots/${spotToShow?.id}`} style={{ textDecoration: 'none' }}>
-                        <div className="placeInfo active">
-                            スポット情報
-                        </div>
-                    </Link>
-
-                    <Link to={`/ratings/spot/${spotToShow?.id}`} state={{ spot_name: spotToShow?.name }} style={{ textDecoration: 'none' }}>
-                        <div className="post">
-                            口コミ一覧
-                        </div>
-                    </Link>
-
-                </div>
-
-
-                {spotToShow &&
-                    <FeatureInfo spot={spotToShow} />
-                }
-                <div className="postContainer">
-
-                </div>
-                {spotToShow &&
-                    <SpotBasicInfo spot={spotToShow} />
-                }
-                <div className="photoContainer">
-                    <div className="header">
-                        写真ギャラリー
                     </div>
-                    <div className="content">
-                        {/* {spotToShow?.image2 ?
+                    {spotToShow &&
+                        <SpotBasicInfo spot={spotToShow} isMobile={isMobile}/>
+                    }
+                    <div className="photoContainer">
+                        <div className="header">
+                            写真ギャラリー
+                        </div>
+                        <div className="content">
+                            {/* {spotToShow?.image2 ?
                             <img src={spotToShow?.image2} alt="" />
                             :
                             <img src="" alt="" />
@@ -159,20 +152,41 @@ const Spot = () => {
                             :
                             <img src="" alt="" />
                         } */}
-                        <img width={"300"} src={spotToShow?.image2} alt="" />
-                        <img width={"300"} src={spotToShow?.image3} alt="" />
-                        <img width={"300"} src={spotToShow?.image4} alt="" />
-                        <img width={"300"} src={spotToShow?.image5} alt="" />
-                        <img width={"300"} src={spotToShow?.image6} alt="" />
+                            <img width={"300"} src={spotToShow?.image2} alt="" />
+                            <img width={"300"} src={spotToShow?.image3} alt="" />
+                            <img width={"300"} src={spotToShow?.image4} alt="" />
+                            <img width={"300"} src={spotToShow?.image5} alt="" />
+                            <img width={"300"} src={spotToShow?.image6} alt="" />
+                        </div>
+
                     </div>
 
                 </div>
+            </>
+        )
+    }
 
-            </div>
+
+    return (
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className="spotContainer">
+                    {commonJsx(false)}
+                </div>
+
+
+            </MediaQuery>
+
+            <MediaQuery query="(max-width: 767px)">
+                <div className="spotContainerMobile">
+                    {commonJsx(true)}
+                </div>
 
 
 
-        </div>
+            </MediaQuery>
+
+        </>
     )
 }
 

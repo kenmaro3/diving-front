@@ -5,9 +5,10 @@ import "./featureinfo.scss"
 
 interface FeatureInfoProp {
     spot: ISpot;
+    isMobile: boolean;
 }
 
-const FeatureInfo: FC<FeatureInfoProp> = ({ spot }) => {
+const FeatureInfo: FC<FeatureInfoProp> = ({ spot, isMobile }) => {
 
     const [waterRating, setWaterRating] = useState<number>(0)
     const [animalRating, setAnimalRating] = useState<number>(0)
@@ -36,10 +37,10 @@ const FeatureInfo: FC<FeatureInfoProp> = ({ spot }) => {
             }
         })
 
-        if(tmpWaterCount > 0){
+        if (tmpWaterCount > 0) {
             setWaterRating(tmpWaterRating / tmpWaterCount)
         }
-        else{
+        else {
             setWaterRating(0);
         }
 
@@ -61,10 +62,10 @@ const FeatureInfo: FC<FeatureInfoProp> = ({ spot }) => {
             }
         })
 
-        if(tmpAnimalCount > 0){
+        if (tmpAnimalCount > 0) {
             setAnimalRating(tmpAnimalRating / tmpAnimalCount)
         }
-        else{
+        else {
             setAnimalRating(0)
         }
 
@@ -85,10 +86,10 @@ const FeatureInfo: FC<FeatureInfoProp> = ({ spot }) => {
             }
         })
 
-        if(tmpActivityCount > 0){
+        if (tmpActivityCount > 0) {
             setActivityRating(tmpActivityRating / tmpActivityCount)
         }
-        else{
+        else {
             setActivityRating(0)
         }
 
@@ -97,38 +98,123 @@ const FeatureInfo: FC<FeatureInfoProp> = ({ spot }) => {
 
     }, [])
 
+    const jsxNotMobile = () => {
+        return (
+            <>
+                <div className="header">
+                    みんなの口コミ情報
+                </div>
+                <div className="featureCard">
+                    <div className="title">
+                        水質情報
+                    </div>
 
-    return (
-        <div className="featureInfoContainer">
-            <div className="header">
-                みんなの口コミ情報
-            </div>
-            <div className="featureCard">
+                    <div className="rating">
+                        <div className="value">
+                            {waterRating}
+
+                        </div>
+
+                    </div>
+                    <div className="comment">
+                        <span className='value'>{waterRatingCount}</span>
+                        <span className="description"> 件の評価</span>
+                    </div>
+                    <div className="comment">
+                        <span className='value'>{waterInfoCount}</span>
+                        <span className="description"> 件の情報</span>
+                    </div>
+
+                </div>
+
                 <div className="icon">
 
                 </div>
-                <div className="title">
-                    水質情報
-                </div>
+                <div className="featureCard">
+                    <div className="title">
+                        生き物情報
 
-                <div className="rating">
-                    <div className="value">
-                        {waterRating}
+                    </div>
+
+                    <div className="rating">
+                        <div className="value">
+                            {animalRating}
+                        </div>
+                    </div>
+
+                    <div className="comment">
+                        <span className='value'>{animalRatingCount}</span>
+                        <span className="description"> 件の評価</span>
+
+                    </div>
+
+                    <div className="comment">
+                        <span className='value'>{animalInfoCount}</span>
+                        <span className="description"> 件の情報</span>
 
                     </div>
 
                 </div>
-                <div className="comment">
-                    <span className='value'>{waterRatingCount}</span>
-                    <span className="description"> 件の評価</span>
+                <div className="icon">
+
                 </div>
-                <div className="comment">
-                    <span className='value'>{waterInfoCount}</span>
-                    <span className="description"> 件の情報</span>
+                <div className="featureCard">
+                    <div className="title">
+                        アクティビティ情報
+
+                    </div>
+
+                    <div className="rating">
+                        <div className="value">
+                            {activityRating}
+                        </div>
+
+                    </div>
+                    <div className="comment">
+                        <span className='value'>{activityRatingCount}</span>
+                        <span className="description"> 件の評価</span>
+                    </div>
+
+                    <div className="comment">
+                        <span className='value'>{activityInfoCount}</span>
+                        <span className="description"> 件の情報</span>
+                    </div>
+
+                </div>
+            </>
+
+        )
+    }
+
+    const jsxMobile = () => {
+        return (
+            <>
+                <div className="header">
+                    みんなの口コミ情報
+                </div>
+                <div className="title">
+                    水質情報
+                </div>
+                <div className="featureCard">
+
+                    <div className="rating">
+                        <div className="value">
+                            {waterRating}
+
+                        </div>
+
+                    </div>
+                    <div className="comment">
+                        <span className='value'>{waterRatingCount}</span>
+                        <span className="description"> 件の評価</span>
+                    </div>
+                    <div className="comment">
+                        <span className='value'>{waterInfoCount}</span>
+                        <span className="description"> 件の情報</span>
+                    </div>
+
                 </div>
 
-            </div>
-            <div className="featureCard">
                 <div className="icon">
 
                 </div>
@@ -136,27 +222,27 @@ const FeatureInfo: FC<FeatureInfoProp> = ({ spot }) => {
                     生き物情報
 
                 </div>
+                <div className="featureCard">
 
-                <div className="rating">
-                    <div className="value">
-                        {animalRating}
+                    <div className="rating">
+                        <div className="value">
+                            {animalRating}
+                        </div>
                     </div>
+
+                    <div className="comment">
+                        <span className='value'>{animalRatingCount}</span>
+                        <span className="description"> 件の評価</span>
+
+                    </div>
+
+                    <div className="comment">
+                        <span className='value'>{animalInfoCount}</span>
+                        <span className="description"> 件の情報</span>
+
+                    </div>
+
                 </div>
-
-                <div className="comment">
-                    <span className='value'>{animalRatingCount}</span>
-                    <span className="description"> 件の評価</span>
-
-                </div>
-
-                <div className="comment">
-                    <span className='value'>{animalInfoCount}</span>
-                    <span className="description"> 件の情報</span>
-
-                </div>
-
-            </div>
-            <div className="featureCard">
                 <div className="icon">
 
                 </div>
@@ -164,24 +250,45 @@ const FeatureInfo: FC<FeatureInfoProp> = ({ spot }) => {
                     アクティビティ情報
 
                 </div>
+                <div className="featureCard">
 
-                <div className="rating">
-                    <div className="value">
-                        {activityRating}
+                    <div className="rating">
+                        <div className="value">
+                            {activityRating}
+                        </div>
+
+                    </div>
+                    <div className="comment">
+                        <span className='value'>{activityRatingCount}</span>
+                        <span className="description"> 件の評価</span>
+                    </div>
+
+                    <div className="comment">
+                        <span className='value'>{activityInfoCount}</span>
+                        <span className="description"> 件の情報</span>
                     </div>
 
                 </div>
-                <div className="comment">
-                    <span className='value'>{activityRatingCount}</span>
-                    <span className="description"> 件の評価</span>
-                </div>
+            </>
 
-                <div className="comment">
-                    <span className='value'>{activityInfoCount}</span>
-                    <span className="description"> 件の情報</span>
-                </div>
+        )
+    }
 
-            </div>
+
+    return (
+        <div className={`${isMobile ? "featureInfoContainerMobile" : "featureInfoContainer"}`}>
+            {
+                isMobile ?
+                    (
+                        jsxMobile()
+
+                    )
+                    :
+                    (
+                        jsxNotMobile()
+
+                    )
+            }
 
         </div>
     )

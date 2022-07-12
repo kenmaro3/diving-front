@@ -11,6 +11,7 @@ import { fetchTodayRatings, setAddRating } from "../../store/reducers/rating/act
 import { CircularProgress } from "@mui/material";
 import { useTitle } from "../../hooks";
 import { Rating } from 'react-simple-star-rating'
+import MediaQuery from "react-responsive";
 
 
 const CreateRating: FC = () => {
@@ -67,7 +68,7 @@ const CreateRating: FC = () => {
         setIsLoading(true)
         try {
             //const response = await RatingService.createRating(file, data['Title'], stringFromHtml, user.id, data['Description'])
-            const response = await RatingService.createRating(user.id, Number(spot_id), 
+            const response = await RatingService.createRating(user.id, Number(spot_id),
                 water, animal, activity, waterRating, animalRating, activityRating, text
             )
             dispatch(setAddRating(response.data))
@@ -83,9 +84,9 @@ const CreateRating: FC = () => {
         }
     }
 
+    const commonJsx = () => {
+        return (
 
-    return (
-        <div className={'createRatingContainer'}>
             <div className="innerMargin">
                 <div className="header">
                     <div className={'buttonContainer'}>
@@ -104,7 +105,7 @@ const CreateRating: FC = () => {
                 </div>
                 <div className="containerInside">
                     <div className="description">
-                        ダイビングスポットの口コミを投稿しましょう。<br/>
+                        ダイビングスポットの口コミを投稿しましょう。<br />
                         水質や出会える生き物、可能なアクティビティの情報を追加しましょう。
                     </div>
                     <div className="inputContainers">
@@ -187,7 +188,29 @@ const CreateRating: FC = () => {
                 </div> */}
 
             </div>
-        </div>
+        )
+
+    }
+
+
+    return (
+        <>
+         <MediaQuery query="(min-width: 768px)">
+            <div className={'createRatingContainer'}>
+                {commonJsx()}
+            </div>
+
+         </MediaQuery>
+
+         <MediaQuery query="(max-width: 767px)">
+            <div className={'createRatingContainerMobile'}>
+                {commonJsx()}
+            </div>
+
+
+         </MediaQuery>
+        
+        </>
 
     );
 };

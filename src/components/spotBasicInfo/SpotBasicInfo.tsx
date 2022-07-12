@@ -5,11 +5,12 @@ import "./spotbasicinfo.scss"
 
 interface SpotBasicInfoProp {
     spot: ISpot;
+    isMobile: boolean;
 }
 
-const SpotBasicInfo: FC<SpotBasicInfoProp> = ({ spot }) => {
+const SpotBasicInfo: FC<SpotBasicInfoProp> = ({ spot, isMobile}) => {
     return (
-        <div className="spotBasicInfoContainer">
+        <div className={`${isMobile ? "spotBasicInfoContainerMobile" : "spotBasicInfoContainer"}`}>
             <div className="header">
                 基本情報
             </div>

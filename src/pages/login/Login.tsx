@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector, useTitle } from "../../hooks";
 import { useForm } from "react-hook-form";
 import { setFlagsFromString } from 'v8';
+import MediaQuery from "react-responsive";
 
 const Login: FC = () => {
     const search = useLocation().search;
@@ -27,10 +28,10 @@ const Login: FC = () => {
 
     useEffect(() => {
         const keyword = queryString.get("show") ?? ""
-        if(keyword === "signup"){
+        if (keyword === "signup") {
             setLoginOrSignUp("signup")
         }
-        else{
+        else {
             setLoginOrSignUp("login")
 
         }
@@ -65,13 +66,13 @@ const Login: FC = () => {
                         <div className="title">
                             メールアドレス
                         </div>
-                        <input type="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className="password">
                         <div className="title">
                             パスワード
                         </div>
-                        <input type="password" name='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                 </div>
 
@@ -99,19 +100,19 @@ const Login: FC = () => {
                         <div className="title">
                             メールアドレス
                         </div>
-                        <input type="email" name='email' onChange={(e) => {setEmail(e.target.value)}} value={email}/>
+                        <input type="email" name='email' onChange={(e) => { setEmail(e.target.value) }} value={email} />
                     </div>
                     <div className="username">
                         <div className="title">
                             ユーザ名
                         </div>
-                        <input type="text" name='username' onChange={(e) => {setUsername(e.target.value)}} value={username}/>
+                        <input type="text" name='username' onChange={(e) => { setUsername(e.target.value) }} value={username} />
                     </div>
                     <div className="password">
                         <div className="title">
                             パスワード
                         </div>
-                        <input type="password" name='password' onChange={(e) => {setPassword(e.target.value)}} value={password}/>
+                        <input type="password" name='password' onChange={(e) => { setPassword(e.target.value) }} value={password} />
                     </div>
                 </div>
 
@@ -124,55 +125,62 @@ const Login: FC = () => {
         )
     }
 
+    const commonJsx = () => {
+        return (
+            <>
+                {isAuth && <Navigate to={'/'} />}
+                {error && <div className={'registerError'}>
+                    {error}
+                </div>}
+
+                <div className="containerInside">
+                    <div className="tabContainer">
+                        <div className={`tab1 ${loginOrSignUp == "login" && "active"}`} onClick={() => setLogin()}>
+                            ログイン
+                        </div>
+                        <div className={`tab2 ${loginOrSignUp == "signup" && "active"}`} onClick={() => setSignUp()}>
+                            新規登録
+                        </div>
+                    </div>
+
+                    {(() => {
+                        if (loginOrSignUp === "login") {
+                            return (
+                                loginJsx()
+                            )
+                        }
+                        else {
+                            return (
+                                signUpJsx()
+                            )
+
+                        }
+                    })()
+                    }
+                </div>
+
+
+            </>
+
+        )
+    }
+
 
     return (
-        <div className={'loginContainer'}>
-            {isAuth && <Navigate to={'/'} />}
-            {error && <div className={'registerError'}>
-                {error}
-            </div>}
-
-            <div className="containerInside">
-                <div className="tabContainer">
-                    <div className={`tab1 ${loginOrSignUp == "login" && "active"}`} onClick={() => setLogin()}>
-                        ログイン
-                    </div>
-                    <div className={`tab2 ${loginOrSignUp == "signup" && "active"}`} onClick={() => setSignUp()}>
-                        新規登録
-                    </div>
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className={'loginContainer'}>
+                    {commonJsx()}
                 </div>
+            </MediaQuery>
 
-
-                {/* <div className="snsContainer">
-                <div className="header">
-                    SNSアカウントでログイン
+            <MediaQuery query="(max-width: 767px)">
+                <div className={'loginContainerMobile'}>
+                    {commonJsx()}
                 </div>
-                <div className="twitter">
-                    <button>twitterでログイン</button>
-                </div>
+            </MediaQuery>
 
-            </div> */}
-
-                {(() => {
-                    if (loginOrSignUp === "login") {
-                        return (
-                            loginJsx()
-                        )
-                    }
-                    else{
-                        return (
-                            signUpJsx()
-                        )
-
-                    }
-                })()
-
-                }
-
-
-            </div>
-
-        </div>
+        </>
     );
 };
 

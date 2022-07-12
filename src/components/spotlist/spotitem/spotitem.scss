@@ -82,3 +82,92 @@
         }
     }
 }
+
+.spotItemContainerMobile {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-bottom: 1px #454545;
+    margin-left: 5%;
+    display: flex;
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .info {
+        width: 100%;
+        margin-left: 20px;
+
+        .name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .address {
+            font-size: 14px;
+            margin-top: 4px;
+            color: #4f4f4f;
+        }
+
+        .feature {
+            margin-top: 4px;
+
+        }
+
+        .stats {
+            font-size: 14px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+
+            .content {
+                margin-right: 20px;
+                display: flex;
+                align-items: center;
+                .number {
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        
+        .ratings{
+            margin-top: 20px;
+
+            .content {
+                .title{
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #4f4f4f;
+                }
+                .number {
+                    font-size: 14px;
+                    margin-left: 10px;
+                    color: #4f4f4f;
+                }
+            }
+        }
+    }
+
+    .right {
+        margin-left: auto;
+        margin-right: 4%;
+
+        .like {
+            .number {
+                margin-left: 5px;
+            }
+        }
+
+        .post {
+            margin-top: 10px;
+
+            .number {
+                margin-left: 5px;
+            }
+        }
+    }
+}

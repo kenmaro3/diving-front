@@ -260,3 +260,166 @@
   }
 
 }
+
+
+
+.searchContainerMobile {
+  .searchHeaderTitle {
+    font-size: 34px;
+    font-weight: 600;
+    margin-left: 10%;
+    margin-top: 40px;
+  }
+
+  .searchHeader {
+    background-color: white;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 40px;
+    border-radius: 20px;
+
+
+    .inputContainer {
+      padding: 20px 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .area {
+        margin-left: 20px;
+
+        .button {
+          border: 1px solid #454545;
+          background-color: white;
+          border: 1px solid #c0c0c0;
+          padding: 10px 12px;
+          border-radius: 10px;
+
+
+          .left {
+            color: blue;
+          }
+
+          .middle {
+            color: #969696;
+            margin-left: 40px;
+          }
+
+        }
+      }
+
+
+      .feature {
+        width: 25%;
+        margin-left: 5%;
+
+        .button {
+          background-color: white;
+          border: 1px solid #c0c0c0;
+          padding: 10px 12px;
+          border-radius: 10px;
+          width: 90%;
+
+          .left {
+            color: blue;
+          }
+
+          .middle {
+            color: #969696;
+            margin-left: 40px;
+          }
+        }
+      }
+
+      .keyword {
+        margin-left: 5%;
+        width: 50%;
+        background-color: none;
+        border: 1px solid #c0c0c0;
+        padding: 8px 8px;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+
+      .button {
+        margin-left: auto;
+        margin-right: 20px;
+        margin-top: 20px;
+        width: 100px;
+        background-color: blue;
+        color: white;
+        font-weight: 500;
+        font-size: 16px;
+        text-align: center;
+        border: 1px solid #c0c0c0;
+        padding: 6px 8px;
+        border-radius: 10px;
+      }
+
+    }
+
+
+  }
+
+  .body {
+    width: 80%;
+    margin-top: 60px;
+    margin-left: 10%;
+    margin-bottom: 40px;
+
+    .header {
+      display: flex;
+
+      .left {
+        .searchTitle {
+          font-size: 20px;
+          font-weight: 500;
+          width: 200px;
+        }
+      }
+
+      .right {
+        margin-left: 40px;
+
+        .select {
+          margin-left: 10px;
+        }
+
+        .result {
+          width: 300px;
+
+          .title {
+            font-size: 20px;
+            font-weight: 500;
+          }
+
+          .number {
+            margin-left: 5px;
+            color: red;
+            font-size: 22px;
+            font-weight: 500;
+          }
+
+          .ken {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+
+    .list {
+      padding-bottom: 20px;
+      margin-top: 30px;
+      background-color: white;
+      border-radius: 20px;
+      height: 100%;
+
+      .spots {
+        margin-top: 40px;
+        margin-bottom: 40px;
+
+      }
+    }
+  }
+
+}

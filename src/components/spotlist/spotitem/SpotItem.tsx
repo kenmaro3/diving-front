@@ -7,10 +7,11 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 interface SpotItemProp {
   spot: ISpot;
+  isMobile: boolean;
 
 }
 
-const SpotItem: FC<SpotItemProp> = ({ spot }) => {
+const SpotItem: FC<SpotItemProp> = ({ spot, isMobile }) => {
   const navigate = useNavigate()
   const jumpToSpot = () => {
     navigate(`/spots/${spot.id}`)
@@ -81,7 +82,7 @@ const SpotItem: FC<SpotItemProp> = ({ spot }) => {
 
 
   return (
-    <div className="spotItemContainer" onClick={(() => jumpToSpot())}>
+    <div className={`${isMobile ? "spotItemContainerMobile" : "spotItemContainer"}`} onClick={(() => jumpToSpot())}>
       <img src="https://www.owd.jp/wp-content/uploads/2018/04/DSC7678.jpg" alt="" />
 
       <div className="info">

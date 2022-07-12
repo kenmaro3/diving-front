@@ -13,6 +13,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import RatingService from '../../services/rating-service';
 import { IRating } from '../../types/rating-type';
 import FeatureInfo from '../../components/featureInfo/FeatureInfo';
+import MediaQuery from "react-responsive";
 
 const Rating = () => {
     const { rating_id } = useParams()
@@ -21,14 +22,14 @@ const Rating = () => {
     const navigate = useNavigate()
 
     const jumpToAllRatings = () => {
-        if (ratingToShow !== undefined){
-            navigate(`/ratings/spot/${ratingToShow.spot.id}`, {state: {spot_name: ratingToShow.spot.name}})
+        if (ratingToShow !== undefined) {
+            navigate(`/ratings/spot/${ratingToShow.spot.id}`, { state: { spot_name: ratingToShow.spot.name } })
         }
 
     }
 
     const jumpToSpot = () => {
-        if (ratingToShow !== undefined){
+        if (ratingToShow !== undefined) {
             navigate(`/spots/${ratingToShow.spot.id}`)
         }
 
@@ -49,8 +50,10 @@ const Rating = () => {
 
     }, [rating_id])
 
-    return (
-        <div className="ratingContainer">
+
+    const commonJsx = () => {
+        return (
+
             <div className="ratingCard">
                 <div className="header">
                     <div className="title">
@@ -185,8 +188,30 @@ const Rating = () => {
 
                 </div>
             </div>
+        )
+    }
 
-        </div>
+    return (
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className="ratingContainer">
+                    {commonJsx()}
+
+                </div>
+
+
+            </MediaQuery>
+
+            <MediaQuery query="(max-width: 767px)">
+                <div className="ratingContainerMobile">
+                    {commonJsx()}
+
+                </div>
+
+
+            </MediaQuery>
+
+        </>
     )
 
 

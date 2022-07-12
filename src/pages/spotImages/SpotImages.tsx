@@ -5,28 +5,8 @@ import { setAddSpot } from '../../store/reducers/spot/action-creators';
 import { useNavigate, useLocation } from "react-router-dom";
 import "./spotimages.scss";
 import SpotService from "../../services/spot-service";
+import MediaQuery from "react-responsive";
 
-
-// interface SpotImagesProp {
-//   name?: string;
-//   zip?: string;
-//   prefecture?: string;
-//   address1?: string;
-//   address2?: string;
-//   address3?: string;
-//   access?: string;
-//   parking?: string;
-//   phone?: string;
-//   hp?: string;
-//   close?: string;
-//   open?: string;
-//   min_price?: string;
-//   rental_price?: string;
-//   water?: string;
-//   animal?: string;
-//   Activity?: string;
-//   other?: string;
-// }
 
 
 const SpotImages: FC = () => {
@@ -56,8 +36,6 @@ const SpotImages: FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
-  // const [name, setName] 
-  // = useState<{ name: string}>(location.state as { name: string})
 
   const [imageUrl, setImageUrl] = useState<string>("")
 
@@ -80,14 +58,6 @@ const SpotImages: FC = () => {
   const [minPrice, setMinPrice] = useState<string>("")
   const [rentalPrice, setRentalPrice] = useState<string>("")
 
-  // const [water, setWater] = useState<string>("")
-  // const [animal, setAnimal] = useState<string>("")
-  // const [Activity, setActivity] = useState<string>("")
-
-  // const [waterRating, setWaterRating] = useState<number>(0)
-  // const [animalRating, setAnimalRating] = useState<number>(0)
-  // const [ActivityRating, setActivityRating] = useState<number>(0)
-
   const [other, setOther] = useState<string>("")
 
   useEffect(() => {
@@ -97,8 +67,8 @@ const SpotImages: FC = () => {
     setAddress1((state as { address1: string }).address1)
     setAddress2((state as { address2: string }).address2)
     setAddress3((state as { address3: string }).address3)
-    setLat((state as {lat: string}).lat)
-    setLng((state as {lng: string}).lng)
+    setLat((state as { lat: string }).lat)
+    setLng((state as { lng: string }).lng)
     setAccess((state as { access: string }).access)
     setParking((state as { parking: string }).parking)
     setPhone((state as { phone: string }).phone)
@@ -107,34 +77,28 @@ const SpotImages: FC = () => {
     setOpen((state as { open: string }).open)
     setMinPrice((state as { minPrice: string }).minPrice)
     setRentalPrice((state as { rentalPrice: string }).rentalPrice)
-    // setWater((state as { water: string }).water)
-    // setAnimal((state as { animal: string }).animal)
-    // setActivity((state as { Activity: string }).Activity)
-    // setWaterRating((state as { waterRating: number }).waterRating)
-    // setAnimalRating((state as { animalRating: number }).animalRating)
-    // setActivityRating((state as { ActivityRating: number }).ActivityRating)
 
     setOther((state as { other: string }).other)
   }, [location])
 
 
   const handleClick = (index: number) => {
-    if(index==1){
+    if (index == 1) {
       hiddenFileInput1.current?.click()
     }
-    else if (index==2){
+    else if (index == 2) {
       hiddenFileInput2.current?.click()
     }
-    else if (index==3){
+    else if (index == 3) {
       hiddenFileInput3.current?.click()
     }
-    else if (index==4){
+    else if (index == 4) {
       hiddenFileInput4.current?.click()
     }
-    else if (index==5){
+    else if (index == 5) {
       hiddenFileInput5.current?.click()
     }
-    else if (index==6){
+    else if (index == 6) {
       hiddenFileInput6.current?.click()
     }
   }
@@ -142,27 +106,27 @@ const SpotImages: FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const fileUploaded = event.target.files?.[0]
     if (fileUploaded) {
-      if(index == 0){
+      if (index == 0) {
         setImageUrl1(URL.createObjectURL(fileUploaded))
         setFile1(fileUploaded)
       }
-      else if(index == 1){
+      else if (index == 1) {
         setImageUrl2(URL.createObjectURL(fileUploaded))
         setFile2(fileUploaded)
       }
-      else if(index == 2){
+      else if (index == 2) {
         setImageUrl3(URL.createObjectURL(fileUploaded))
         setFile3(fileUploaded)
       }
-      else if(index == 3){
+      else if (index == 3) {
         setImageUrl4(URL.createObjectURL(fileUploaded))
         setFile4(fileUploaded)
       }
-      else if(index == 4){
+      else if (index == 4) {
         setImageUrl5(URL.createObjectURL(fileUploaded))
         setFile5(fileUploaded)
       }
-      else if(index == 5){
+      else if (index == 5) {
         setImageUrl6(URL.createObjectURL(fileUploaded))
         setFile6(fileUploaded)
       }
@@ -194,11 +158,6 @@ const SpotImages: FC = () => {
         hp,
         close, open, minPrice, rentalPrice, other,
       )
-      // const response = await SpotService.createSpot(file, location.state.name, location.state.zip, location.state.prefecture, location.state.address1,
-      //   location.state.address2, location.state.address3, location.state.access, location.state.parking, location.state.phone, location.state.hp,
-      //   location.state.close, location.state.open, location.state.min_price, location.state.rental_price, location.state.water, location.state.animal, location.state.Activity, location.state.other
-      //   )
-      // dispatch(setAddSpot(response.data))
       navigate(`/spots/${response.data.id}`)
     } catch (e: any) {
       const response = e.response.data.message
@@ -212,129 +171,132 @@ const SpotImages: FC = () => {
 
   }
 
-  return (
-    <div className='spotImagesContainer'>
-      <div className="headContainer">
-        <div className="title">
-          スポットの画像を登録
+  const commonJsx = (isMobile: boolean) => {
+    return (
+      <>
+        <div className="headContainer">
+          <div className="title">
+            スポットの画像を登録
+          </div>
+
+          <div className="description">
+            アップロードする写真はご自身で撮影した写真か、使用許可をいただいた写真のみでお願いします。 <br />
+            不適切な画像をアップロードした場合、運営判断で削除する場合がございます。
+          </div>
         </div>
 
-        <div className="description">
-          アップロードする写真はご自身で撮影した写真か、使用許可をいただいた写真のみでお願いします。 <br />
-          不適切な画像をアップロードした場合、運営判断で削除する場合がございます。
+        <div className="flowContainer">
+          <div className="first">
+            01施設情報入力
+          </div>
+          <div className="second active">
+            02施設画像登録
+          </div>
+          <div className="third">
+            03登録完了
+          </div>
         </div>
-      </div>
 
-      <div className="flowContainer">
-        <div className="first">
-          01施設情報入力
-        </div>
-        <div className="second active">
-          02施設画像登録
-        </div>
-        <div className="third">
-          03登録完了
-        </div>
-      </div>
-
-      <div className="basicInfoContainer">
-        <div className="headerTitle">
-          画像登録
-        </div>
-        <div className="container">
-          <div className="containerInside">
-            <div className="description">
-              画像は追加と差し替えのみ行うことができます。 <br />
-              特定画像の削除ご希望の方はお手数ですが、お問い合わせフォームよりご連絡ください。
-            </div>
-            <div className="inputContainers">
-              <div className="inputContainer">
-                <div className="title">画像１</div>
-                {imageUrl1 ? <img width={300} height={300} src={imageUrl1} alt="postPicture1" />
-                  :
-                  <img src="" alt="" />
-                }
-                <button type="button" onClick={() => handleClick(1)}>画像を登録する</button>
-                <input
-                  type="file"
-                  ref={hiddenFileInput1}
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleChange(e, 0)}
-                />
+        <div className="basicInfoContainer">
+          <div className="headerTitle">
+            画像登録
+          </div>
+          <div className="container">
+            <div className="containerInside">
+              <div className="description">
+                画像は追加と差し替えのみ行うことができます。 <br />
+                特定画像の削除ご希望の方はお手数ですが、お問い合わせフォームよりご連絡ください。
               </div>
+              <div className="inputContainers">
+                <div className="inputContainer">
+                  <div className="title">画像１</div>
+                  {imageUrl1 ? <img width={300} height={300} src={imageUrl1} alt="postPicture1" />
+                    :
+                    <img src="" alt="" />
+                  }
+                  <button type="button" onClick={() => handleClick(1)}>画像を登録する</button>
+                  <input
+                    type="file"
+                    ref={hiddenFileInput1}
+                    style={{ display: 'none' }}
+                    onChange={(e) => handleChange(e, 0)}
+                  />
+                </div>
 
-              <div className="inputContainer">
-                <div className="title">画像２</div>
-                {imageUrl2 ? <img width={300} height={300} src={imageUrl2} alt="postPicture2" />
-                  :
-                  <img src="" alt="" />
-                }
-                <button type="button" onClick={() => handleClick(2)}>画像を登録する</button>
-                <input
-                  type="file"
-                  ref={hiddenFileInput2}
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleChange(e, 1)}
-                />
-              </div>
+                <div className="inputContainer">
+                  <div className="title">画像２</div>
+                  {imageUrl2 ? <img width={300} height={300} src={imageUrl2} alt="postPicture2" />
+                    :
+                    <img src="" alt="" />
+                  }
+                  <button type="button" onClick={() => handleClick(2)}>画像を登録する</button>
+                  <input
+                    type="file"
+                    ref={hiddenFileInput2}
+                    style={{ display: 'none' }}
+                    onChange={(e) => handleChange(e, 1)}
+                  />
+                </div>
 
-              <div className="inputContainer">
-                <div className="title">画像３</div>
-                {imageUrl3 ? <img width={300} height={300} src={imageUrl3} alt="postPicture3" />
-                  :
-                  <img src="" alt="" />
-                }
-                <button type="button" onClick={() => handleClick(3)}>画像を登録する</button>
-                <input
-                  type="file"
-                  ref={hiddenFileInput3}
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleChange(e, 2)}
-                />
-              </div>
+                <div className="inputContainer">
+                  <div className="title">画像３</div>
+                  {imageUrl3 ? <img width={300} height={300} src={imageUrl3} alt="postPicture3" />
+                    :
+                    <img src="" alt="" />
+                  }
+                  <button type="button" onClick={() => handleClick(3)}>画像を登録する</button>
+                  <input
+                    type="file"
+                    ref={hiddenFileInput3}
+                    style={{ display: 'none' }}
+                    onChange={(e) => handleChange(e, 2)}
+                  />
+                </div>
 
-              <div className="inputContainer">
-                <div className="title">画像４</div>
-                {imageUrl4 ? <img width={300} height={300} src={imageUrl4} alt="postPicture4" />
-                  :
-                  <img src="" alt="" />
-                }
-                <button type="button" onClick={() => handleClick(4)}>画像を登録する</button>
-                <input
-                  type="file"
-                  ref={hiddenFileInput4}
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleChange(e, 3)}
-                />
-              </div>
+                <div className="inputContainer">
+                  <div className="title">画像４</div>
+                  {imageUrl4 ? <img width={300} height={300} src={imageUrl4} alt="postPicture4" />
+                    :
+                    <img src="" alt="" />
+                  }
+                  <button type="button" onClick={() => handleClick(4)}>画像を登録する</button>
+                  <input
+                    type="file"
+                    ref={hiddenFileInput4}
+                    style={{ display: 'none' }}
+                    onChange={(e) => handleChange(e, 3)}
+                  />
+                </div>
 
-              <div className="inputContainer">
-                <div className="title">画像５</div>
-                {imageUrl5 ? <img width={300} height={300} src={imageUrl5} alt="postPicture5" />
-                  :
-                  <img src="" alt="" />
-                }
-                <button type="button" onClick={() => handleClick(5)}>画像を登録する</button>
-                <input
-                  type="file"
-                  ref={hiddenFileInput5}
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleChange(e, 4)}
-                />
-              </div>
-              <div className="inputContainer">
-                <div className="title">画像６</div>
-                {imageUrl6 ? <img width={300} height={300} src={imageUrl6} alt="postPicture6" />
-                  :
-                  <img src="" alt="" />
-                }
-                <button type="button" onClick={() => handleClick(6)}>画像を登録する</button>
-                <input
-                  type="file"
-                  ref={hiddenFileInput6}
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleChange(e, 5)}
-                />
+                <div className="inputContainer">
+                  <div className="title">画像５</div>
+                  {imageUrl5 ? <img width={300} height={300} src={imageUrl5} alt="postPicture5" />
+                    :
+                    <img src="" alt="" />
+                  }
+                  <button type="button" onClick={() => handleClick(5)}>画像を登録する</button>
+                  <input
+                    type="file"
+                    ref={hiddenFileInput5}
+                    style={{ display: 'none' }}
+                    onChange={(e) => handleChange(e, 4)}
+                  />
+                </div>
+                <div className="inputContainer">
+                  <div className="title">画像６</div>
+                  {imageUrl6 ? <img width={300} height={300} src={imageUrl6} alt="postPicture6" />
+                    :
+                    <img src="" alt="" />
+                  }
+                  <button type="button" onClick={() => handleClick(6)}>画像を登録する</button>
+                  <input
+                    type="file"
+                    ref={hiddenFileInput6}
+                    style={{ display: 'none' }}
+                    onChange={(e) => handleChange(e, 5)}
+                  />
+                </div>
+
               </div>
 
             </div>
@@ -343,18 +305,34 @@ const SpotImages: FC = () => {
 
         </div>
 
-      </div>
+        <div className="backButtonContainer">
+          <button onClick={(() => submitSpot())}>戻る</button>
+        </div>
 
-      <div className="backButtonContainer">
-        <button onClick={(() => submitSpot())}>戻る</button>
-      </div>
+        <div className="buttonContainer">
+          <button onClick={(() => submitSpot())}>登録を完了する</button>
+        </div>
+      </>
+    )
 
-      <div className="buttonContainer">
-        <button onClick={(() => submitSpot())}>登録を完了する</button>
-      </div>
+  }
 
+  return (
 
-    </div>
+    <>
+      <MediaQuery query="(min-width: 768px)">
+        <div className='spotImagesContainer'>
+          {commonJsx(false)}
+        </div>
+      </MediaQuery>
+
+      <MediaQuery query="(max-width: 767px)">
+        <div className='spotImagesContainerMobile'>
+          {commonJsx(true)}
+        </div>
+      </MediaQuery>
+
+    </>
   )
 }
 

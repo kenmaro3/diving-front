@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ratingspotall.scss'
-import { Link, useParams, useNavigate, useLocation} from "react-router-dom";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import { formatDate } from "../../helpers";
 
 import hljs from 'highlight.js/lib/core';
@@ -14,6 +14,7 @@ import RatingService from '../../services/rating-service';
 import { IRating } from '../../types/rating-type';
 import FeatureInfo from '../../components/featureInfo/FeatureInfo';
 import RatingItem from '../../components/ratinglist/ratingItem/RatingItem';
+import MediaQuery from "react-responsive";
 
 const RatingSpotAll = () => {
     const { spot_id } = useParams()
@@ -47,33 +48,62 @@ const RatingSpotAll = () => {
     }, [])
 
     const ratingParser = (rating: number) => {
-        if(rating === 0){
+        if (rating === 0) {
             return "---"
         }
-        else{
+        else {
             return rating
         }
     }
 
     return (
-        <div className="ratingSpotAllContainer">
-            <div className="headerContainer">
-                <div className="title">
-                    口コミ情報 一覧
-                </div>
-                <div className="description">
-                    <span className="spot">{spotName} </span>
-                    <span className='info'>の口コミを確認してみましょう</span>
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className="ratingSpotAllContainer">
+                    <div className="headerContainer">
+                        <div className="title">
+                            口コミ情報 一覧
+                        </div>
+                        <div className="description">
+                            <span className="spot">{spotName} </span>
+                            <span className='info'>の口コミを確認してみましょう</span>
+
+                        </div>
+                    </div>
+
+                    {ratingToShow.map((rating) => (
+                        <RatingItem rating={rating} isMobile={false} />
+
+                    ))}
 
                 </div>
-            </div>
 
-            {ratingToShow.map((rating) => (
-                <RatingItem rating={rating} isMobile={false} />
+            </MediaQuery>
 
-            ))}
+            <MediaQuery query="(max-width: 767px)">
+                <div className="ratingSpotAllContainerMobile">
+                    <div className="headerContainer">
+                        <div className="title">
+                            口コミ情報 一覧
+                        </div>
+                        <div className="description">
+                            <span className="spot">{spotName} </span>
+                            <span className='info'>の口コミを確認してみましょう</span>
 
-        </div>
+                        </div>
+                    </div>
+
+                    {ratingToShow.map((rating) => (
+                        <RatingItem rating={rating} isMobile={true} />
+
+                    ))}
+
+                </div>
+
+
+
+            </MediaQuery>
+        </>
     )
 
 

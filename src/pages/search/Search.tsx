@@ -11,6 +11,7 @@ import FeatureSelect from '../../components/featureSelect/FeatureSelect';
 import PrefectureList from '../../components/prefectureList/PrefectureList';
 import SpotService from '../../services/spot-service';
 import SpotItem from '../../components/spotlist/spotitem/SpotItem';
+import MediaQuery from "react-responsive";
 
 const Search: FC = () => {
     const search = useLocation().search;
@@ -55,72 +56,75 @@ const Search: FC = () => {
 
 
 
+    const commonJsx = (isMobile: boolean) => {
+        return (
+            <>
+                <div className="searchHeaderTitle">
+                    ダイビングスポット検索
+                </div>
+                <div className="searchHeader">
+                    <div className="inputContainer">
+                        <div className="area">
+                            <PrefectureList setPrefecture={setPrefecture} />
+                        </div>
+
+                        <input type="text" placeholder='キーワード' className='keyword' onChange={(e) => { setKeyword(e.target.value) }} />
+                        <div className="button" onClick={() => jumpToSearch()}>
+                            <div className="icon"></div>
+                            <span className='value'>検索</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="body">
+                    <div className="header">
+                        <div className="left">
+                            <div className="searchTitle">
+                                検索結果一覧
+                            </div>
+                        </div>
+                        <div className="right">
+                            <div className="result">
+                                <span className='title'>検索結果</span>
+                                <span className='number'>{spots.length}</span>
+                                <span className='ken'>件</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="list">
+                        <div className="spots">
+                            {
+                                spots.map((spot) => (
+                                    <SpotItem spot={spot} isMobile={isMobile} />
+
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </>
+
+        )
+    }
+
+
+
     return (
-        <div className={'searchContainer'}>
-            <div className="searchHeaderTitle">
-                ダイビングスポット検索
-            </div>
-            <div className="searchHeader">
-                <div className="inputContainer">
-                    <div className="area">
-                        <PrefectureList setPrefecture={setPrefecture} />
-                    </div>
-
-                    <input type="text" placeholder='キーワード' className='keyword' onChange={(e) => { setKeyword(e.target.value) }} />
-                    <div className="button" onClick={() => jumpToSearch()}>
-                        <div className="icon"></div>
-                        <span className='value'>検索</span>
-                    </div>
-
-
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className={'searchContainer'}>
+                    {commonJsx(false)}
                 </div>
+            </MediaQuery>
 
-
-            </div>
-
-            <div className="body">
-                <div className="header">
-                    <div className="left">
-                        <div className="searchTitle">
-                            検索結果一覧
-
-                        </div>
-                        {/* <div className="description">
-                                現在地から近い順
-                            </div> */}
-
-                    </div>
-                    <div className="right">
-                        <div className="result">
-                            <span className='title'>検索結果</span>
-                            <span className='number'>{spots.length}</span>
-                            <span className='ken'>件</span>
-
-
-                        </div>
-                    </div>
+            <MediaQuery query="(max-width: 767px)">
+                <div className={'searchContainerMobile'}>
+                    {commonJsx(true)}
                 </div>
-
-                <div className="list">
-                    {/* <div className="segment">
-                            <button className="array active">リスト表示</button>
-                            <button className='map'>地図表示</button>
-
-                        </div> */}
-
-                    <div className="spots">
-
-                        {
-                            spots.map((spot) => (
-                                <SpotItem spot={spot} />
-
-                            ))
-                        }
-                    </div>
-
-                </div>
-            </div>
-        </div>
+            </MediaQuery>
+        </>
     );
 };
 

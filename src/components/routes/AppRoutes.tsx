@@ -42,7 +42,7 @@ const AppRoutes: FC = () => {
                 <Route element={<RequireAuth />}>
                     <Route path={'spots/edit/:spot_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><EditSpot/></motion.div>} />
                     <Route path={'posts/new/:spot_id'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><CreateRating/></motion.div>} />
-                    <Route path={'spots/:spot_id/images/new'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><SpotImages/></motion.div>} />
+                    <Route path={'spots/images/new'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><SpotImages/></motion.div>} />
                     <Route path={'spots/:spot_id/images/edit'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><EditSpotImages/></motion.div>} />
                     <Route path={'spots/new'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><CreateSpot/></motion.div>} />
                     <Route path={'profile/edit'} element={<ProfileEdit/>} />
