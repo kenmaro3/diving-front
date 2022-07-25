@@ -7,6 +7,7 @@ import StarRatingInput from 'react-star-rating-input'
 import "./editspot.scss"
 import SpotService from '../../services/spot-service';
 import { ISpot } from "../../types/spot-type";
+import MediaQuery from "react-responsive";
 
 
 const EditSpot = () => {
@@ -25,13 +26,13 @@ const EditSpot = () => {
 
     useEffect(() => {
 
-            (async () => {
-                if (spot_id !== undefined) {
-                    const response = await SpotService.getById(Number(spot_id))
-                    setSpotToEdit(response.data)
-                }
+        (async () => {
+            if (spot_id !== undefined) {
+                const response = await SpotService.getById(Number(spot_id))
+                setSpotToEdit(response.data)
+            }
 
-            })()
+        })()
 
     }, [spot_id])
 
@@ -90,190 +91,211 @@ const EditSpot = () => {
 
     const [other, setOther] = useState<string>("")
 
+    const commonJsx = (isMobile: boolean) => {
+        return (
+            <>
+                <div className="headContainer">
+                    <div className="title">
+                        スポット情報を編集
+                    </div>
+
+                    <div className="description">
+
+                        ダイビングスポットの編集をしましょう。 <br />
+                        まだ記載されていない情報や、修正が必要な情報について編集をお願いします。 <br />
+                    </div>
+                </div>
+
+                <div className="flowContainer">
+                    <div className="first">
+                        01施設情報入力
+                    </div>
+                    <div className="second">
+                        02施設画像登録
+                    </div>
+                    <div className="third">
+                        03登録完了
+                    </div>
+                </div>
+
+                <div className="basicInfoContainer">
+                    <div className="headerTitle">
+                        施設基本情報
+                    </div>
+                    <div className="container">
+                        <div className="containerInside">
+                            <div className="description">
+                                知っている項目を編集してみましょう。<br />
+                            </div>
+                            <div className="inputContainers">
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        スポット名
+
+                                    </div>
+                                    <input type="text" name='name' value={name} onChange={(e) => setName(e.target.value)} placeholder='例: xxxダイビングスポット' />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        都道府県
+
+                                    </div>
+                                    <PrefectureList setPrefecture={setPrefecture} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        郵便番号
+
+                                    </div>
+                                    <input type="text" placeholder='例: 123-4567' value={zip} onChange={(e) => setZip(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        住所１
+
+                                    </div>
+                                    <input type="text" placeholder='市区 例: 渋谷区' value={address1} onChange={(e) => setAddress1(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        住所２
+
+                                    </div>
+                                    <input type="text" placeholder='町村 例: 千駄ヶ谷1-23-4' value={address2} onChange={(e) => setAddress2(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        住所３
+
+                                    </div>
+                                    <input type="text" placeholder='例: ダイビング海岸' value={address3} onChange={(e) => setAddress3(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        緯度
+                                    </div>
+                                    <input type="text" placeholder='例: 35.4548' value={lat} onChange={(e) => setLat(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        経度
+                                    </div>
+                                    <input type="text" placeholder='例: 139.4534' value={lng} onChange={(e) => setLng(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        アクセス
+
+                                    </div>
+                                    <textarea name="" id="" rows={10} value={access} onChange={(e) => setAccess(e.target.value)}></textarea>
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        駐車場情報
+
+                                    </div>
+                                    <input type="text" placeholder='例: 有り 有料３０台' value={parking} onChange={(e) => setParking(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        電話番号
+
+                                    </div>
+                                    <input type="text" placeholder='例: 123-4567-8901' value={phone} onChange={(e) => setPhone(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        ホームページ
+
+                                    </div>
+                                    <input type="text" placeholder='例: https://google.com' value={hp} onChange={(e) => setHp(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        定休日
+
+                                    </div>
+                                    <input type="text" placeholder='例: 毎月第２水曜日' value={close} onChange={(e) => setClose(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        営業時間
+
+                                    </div>
+                                    <input type="text" placeholder='例: 10:00 ~ 17:00' value={open} onChange={(e) => setOpen(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        最低料金
+
+                                    </div>
+                                    <input type="text" placeholder='例: ガイド料4000円' value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
+                                </div>
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        レンタル情報
+
+                                    </div>
+                                    <input type="text" placeholder='例: 全てレンタル可能（５０００円〜）' value={rentalPrice} onChange={(e) => setRentalPrice(e.target.value)} />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div className="otherInfoContainer">
+                    <div className="headerTitle">
+                        補足情報
+                    </div>
+                    <div className="container">
+
+                        <div className="containerInside">
+                            <div className="description">
+                                おすすめポイントなど補足があればご自由にお書きください。
+                            </div>
+                            <div className="inputContainers">
+                                <div className="inputContainer">
+                                    <div className="title">
+                                        おすすめ情報
+                                    </div>
+                                    <textarea name="" id="" rows={4} value={other} onChange={(e) => setOther(e.target.value)}></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="buttonContainer">
+                    <button onClick={(() => jumpToAddImages())}>画像の登録に進む</button>
+                </div>
+            </>
+
+        )
+    }
+
 
     return (
-        <div className='createSpotContainer'>
-            <div className="headContainer">
-                <div className="title">
-                    スポット情報を編集
-                </div>
-
-                <div className="description">
-
-                    ダイビングスポットの編集をしましょう。 <br />
-                    まだ記載されていない情報や、修正が必要な情報について編集をお願いします。 <br />
-                </div>
-            </div>
-
-            <div className="flowContainer">
-                <div className="first">
-                    01施設情報入力
-                </div>
-                <div className="second">
-                    02施設画像登録
-                </div>
-                <div className="third">
-                    03登録完了
-                </div>
-            </div>
-
-            <div className="basicInfoContainer">
-                <div className="headerTitle">
-                    施設基本情報
-                </div>
-                <div className="container">
-                    <div className="containerInside">
-                        <div className="description">
-                            知っている項目を編集してみましょう。<br />
-                        </div>
-                        <div className="inputContainers">
-                            <div className="inputContainer">
-                                <div className="title">
-                                    スポット名
-
-                                </div>
-                                <input type="text" name='name' value={name} onChange={(e) => setName(e.target.value)} placeholder='例: xxxダイビングスポット' />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    都道府県
-
-                                </div>
-                                <PrefectureList setPrefecture={setPrefecture} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    郵便番号
-
-                                </div>
-                                <input type="text" placeholder='例: 123-4567' value={zip} onChange={(e) => setZip(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    住所１
-
-                                </div>
-                                <input type="text" placeholder='市区 例: 渋谷区' value={address1} onChange={(e) => setAddress1(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    住所２
-
-                                </div>
-                                <input type="text" placeholder='町村 例: 千駄ヶ谷1-23-4' value={address2} onChange={(e) => setAddress2(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    住所３
-
-                                </div>
-                                <input type="text" placeholder='例: ダイビング海岸' value={address3} onChange={(e) => setAddress3(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    緯度
-                                </div>
-                                <input type="text" placeholder='例: 35.4548' value={lat} onChange={(e) => setLat(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    経度 
-                                </div>
-                                <input type="text" placeholder='例: 139.4534' value={lng} onChange={(e) => setLng(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    アクセス
-
-                                </div>
-                                <textarea name="" id="" rows={10} value={access} onChange={(e) => setAccess(e.target.value)}></textarea>
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    駐車場情報
-
-                                </div>
-                                <input type="text" placeholder='例: 有り 有料３０台' value={parking} onChange={(e) => setParking(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    電話番号
-
-                                </div>
-                                <input type="text" placeholder='例: 123-4567-8901' value={phone} onChange={(e) => setPhone(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    ホームページ
-
-                                </div>
-                                <input type="text" placeholder='例: https://google.com' value={hp} onChange={(e) => setHp(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    定休日
-
-                                </div>
-                                <input type="text" placeholder='例: 毎月第２水曜日' value={close} onChange={(e) => setClose(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    営業時間
-
-                                </div>
-                                <input type="text" placeholder='例: 10:00 ~ 17:00' value={open} onChange={(e) => setOpen(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    最低料金
-
-                                </div>
-                                <input type="text" placeholder='例: ガイド料4000円' value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
-                            </div>
-                            <div className="inputContainer">
-                                <div className="title">
-                                    レンタル情報
-
-                                </div>
-                                <input type="text" placeholder='例: 全てレンタル可能（５０００円〜）' value={rentalPrice} onChange={(e) => setRentalPrice(e.target.value)} />
-                            </div>
-                        </div>
-
-                    </div>
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className='createSpotContainer'>
+                    {commonJsx(false)}
 
                 </div>
 
-            </div>
+            </MediaQuery>
 
-
-            <div className="otherInfoContainer">
-                <div className="headerTitle">
-                    補足情報
+            <MediaQuery query="(max-width: 767px)">
+                <div className='createSpotContainerMobile'>
+                    {commonJsx(true)}
                 </div>
-                <div className="container">
 
-                    <div className="containerInside">
-                        <div className="description">
-                            おすすめポイントなど補足があればご自由にお書きください。
-                        </div>
-                        <div className="inputContainers">
-                            <div className="inputContainer">
-                                <div className="title">
-                                    おすすめ情報
-                                </div>
-                                <textarea name="" id="" rows={4} value={other} onChange={(e) => setOther(e.target.value)}></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </MediaQuery>
+        </>
 
-            <div className="buttonContainer">
-                <button onClick={(() => jumpToAddImages())}>画像の登録に進む</button>
-            </div>
-
-
-        </div>
     )
 }
 

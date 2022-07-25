@@ -17,7 +17,7 @@ const SpotBasicInfo: FC<SpotBasicInfoProp> = ({ spot, isMobile}) => {
             <div className="container">
                 <div className="left">
                     <div className="image">
-                        <img width="400px" src={spot.image1} alt="" />
+                        <img width={`${isMobile ? "300px" : "400px"}`} src={spot.image1} alt="" />
 
 
                     </div>
